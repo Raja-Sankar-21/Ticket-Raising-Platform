@@ -2,7 +2,7 @@ import React, { useState, useEffect, useCallback } from "react";
 import "./App.css";
 
 function App() {
-  const API_BASE_URL = process.env.REACT_APP_API_URL || "http://localhost:5000/api";
+  const API_BASE_URL = process.env.REACT_APP_API_URL || "https://ticket-raising-platform-2.onrender.com";
 
   const [tickets, setTickets] = useState([]);
   const [formData, setFormData] = useState({
