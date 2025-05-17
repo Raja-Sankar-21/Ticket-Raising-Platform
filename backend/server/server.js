@@ -13,7 +13,7 @@ if (!MONGO_URI) {
 }
 
 app.use(cors({
-    origin: 'http://localhost:3000',
+    origin: 'https://ticket-raising-platform.vercel.app',
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH'],
 }));
 
