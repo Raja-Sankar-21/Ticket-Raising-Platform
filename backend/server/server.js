@@ -13,8 +13,7 @@ if (!MONGO_URI) {
 }
 
 app.use(cors({
-    origin: 'https://your-frontend-domain.vercel.app', 
-    credentials: true,
+    origin: 'http://localhost:3000',
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH'],
 }));
 
