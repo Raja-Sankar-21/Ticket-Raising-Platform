@@ -2,7 +2,7 @@ import React, { useState, useEffect, useCallback } from "react";
 import "./App.css";
 
 function App() {
-  const API_BASE_URL = process.env.REACT_APP_API_URL || "http://localhost:5000/api";
+  const API_BASE_URL = process.env.REACT_APP_API_URL || "http://localhost:5000";
 
   const [tickets, setTickets] = useState([]);
   const [formData, setFormData] = useState({
@@ -24,7 +24,7 @@ function App() {
     try {
       setLoading(true);
       setError(null);
-      const response = await fetch(`${API_BASE_URL}/tickets`);
+      const response = await fetch(`${API_BASE_URL}/api/tickets`);
       console.log("Response:", response);
       if (!response.ok) throw new Error("Failed to fetch tickets");
       const data = await response.json();
@@ -53,7 +53,7 @@ function App() {
     e.preventDefault();
     console.log("Form Data:", formData);
     try {
-      const response = await fetch(`${API_BASE_URL}/tickets`, {
+      const response = await fetch(`${API_BASE_URL}/api/tickets`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData)
@@ -104,7 +104,7 @@ function App() {
 
   const handleDelete = async (ticketId) => {
     try {
-      await fetch(`${API_BASE_URL}/tickets/${ticketId}`, {
+      await fetch(`${API_BASE_URL}/api/tickets/${ticketId}`, {
         method: "DELETE"
       });
       setTickets((prevTickets) => prevTickets.filter((ticket) => ticket._id !== ticketId));
@@ -118,7 +118,7 @@ function App() {
     try {
       setLoading(true);
       setError(null);
-      const response = await fetch(`${API_BASE_URL}/tickets/${ticketId}`, {
+      const response = await fetch(`${API_BASE_URL}/api/tickets/${ticketId}`, {
         method: "PATCH",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ priority: newPriority })
@@ -148,7 +148,7 @@ function App() {
     try {
       setLoading(true);
       setError(null);
-      const response = await fetch(`${API_BASE_URL}/tickets/${ticketId}`, {
+      const response = await fetch(`${API_BASE_URL}/api/tickets/${ticketId}`, {
         method: "PATCH",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ status: newStatus })
